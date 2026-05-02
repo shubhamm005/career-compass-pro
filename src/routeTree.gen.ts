@@ -9,38 +9,239 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as JobsRouteImport } from './routes/jobs'
+import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OfficerStudentsRouteImport } from './routes/officer.students'
+import { Route as OfficerPostJobRouteImport } from './routes/officer.post-job'
+import { Route as JobsIdRouteImport } from './routes/jobs.$id'
+import { Route as DashboardStudentRouteImport } from './routes/dashboard.student'
+import { Route as DashboardOfficerRouteImport } from './routes/dashboard.officer'
+import { Route as DashboardAdminRouteImport } from './routes/dashboard.admin'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplicationsRoute = ApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfficerStudentsRoute = OfficerStudentsRouteImport.update({
+  id: '/officer/students',
+  path: '/officer/students',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfficerPostJobRoute = OfficerPostJobRouteImport.update({
+  id: '/officer/post-job',
+  path: '/officer/post-job',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsIdRoute = JobsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => JobsRoute,
+} as any)
+const DashboardStudentRoute = DashboardStudentRouteImport.update({
+  id: '/dashboard/student',
+  path: '/dashboard/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardOfficerRoute = DashboardOfficerRouteImport.update({
+  id: '/dashboard/officer',
+  path: '/dashboard/officer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardAdminRoute = DashboardAdminRouteImport.update({
+  id: '/dashboard/admin',
+  path: '/dashboard/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/applications': typeof ApplicationsRoute
+  '/jobs': typeof JobsRouteWithChildren
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/officer': typeof DashboardOfficerRoute
+  '/dashboard/student': typeof DashboardStudentRoute
+  '/jobs/$id': typeof JobsIdRoute
+  '/officer/post-job': typeof OfficerPostJobRoute
+  '/officer/students': typeof OfficerStudentsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/applications': typeof ApplicationsRoute
+  '/jobs': typeof JobsRouteWithChildren
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/officer': typeof DashboardOfficerRoute
+  '/dashboard/student': typeof DashboardStudentRoute
+  '/jobs/$id': typeof JobsIdRoute
+  '/officer/post-job': typeof OfficerPostJobRoute
+  '/officer/students': typeof OfficerStudentsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/applications': typeof ApplicationsRoute
+  '/jobs': typeof JobsRouteWithChildren
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/officer': typeof DashboardOfficerRoute
+  '/dashboard/student': typeof DashboardStudentRoute
+  '/jobs/$id': typeof JobsIdRoute
+  '/officer/post-job': typeof OfficerPostJobRoute
+  '/officer/students': typeof OfficerStudentsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/applications'
+    | '/jobs'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/register'
+    | '/dashboard/admin'
+    | '/dashboard/officer'
+    | '/dashboard/student'
+    | '/jobs/$id'
+    | '/officer/post-job'
+    | '/officer/students'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/applications'
+    | '/jobs'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/register'
+    | '/dashboard/admin'
+    | '/dashboard/officer'
+    | '/dashboard/student'
+    | '/jobs/$id'
+    | '/officer/post-job'
+    | '/officer/students'
+  id:
+    | '__root__'
+    | '/'
+    | '/applications'
+    | '/jobs'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/register'
+    | '/dashboard/admin'
+    | '/dashboard/officer'
+    | '/dashboard/student'
+    | '/jobs/$id'
+    | '/officer/post-job'
+    | '/officer/students'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApplicationsRoute: typeof ApplicationsRoute
+  JobsRoute: typeof JobsRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
+  DashboardAdminRoute: typeof DashboardAdminRoute
+  DashboardOfficerRoute: typeof DashboardOfficerRoute
+  DashboardStudentRoute: typeof DashboardStudentRoute
+  OfficerPostJobRoute: typeof OfficerPostJobRoute
+  OfficerStudentsRoute: typeof OfficerStudentsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/applications': {
+      id: '/applications'
+      path: '/applications'
+      fullPath: '/applications'
+      preLoaderRoute: typeof ApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +249,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/officer/students': {
+      id: '/officer/students'
+      path: '/officer/students'
+      fullPath: '/officer/students'
+      preLoaderRoute: typeof OfficerStudentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/officer/post-job': {
+      id: '/officer/post-job'
+      path: '/officer/post-job'
+      fullPath: '/officer/post-job'
+      preLoaderRoute: typeof OfficerPostJobRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/$id': {
+      id: '/jobs/$id'
+      path: '/$id'
+      fullPath: '/jobs/$id'
+      preLoaderRoute: typeof JobsIdRouteImport
+      parentRoute: typeof JobsRoute
+    }
+    '/dashboard/student': {
+      id: '/dashboard/student'
+      path: '/dashboard/student'
+      fullPath: '/dashboard/student'
+      preLoaderRoute: typeof DashboardStudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/officer': {
+      id: '/dashboard/officer'
+      path: '/dashboard/officer'
+      fullPath: '/dashboard/officer'
+      preLoaderRoute: typeof DashboardOfficerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/admin': {
+      id: '/dashboard/admin'
+      path: '/dashboard/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof DashboardAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface JobsRouteChildren {
+  JobsIdRoute: typeof JobsIdRoute
+}
+
+const JobsRouteChildren: JobsRouteChildren = {
+  JobsIdRoute: JobsIdRoute,
+}
+
+const JobsRouteWithChildren = JobsRoute._addFileChildren(JobsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApplicationsRoute: ApplicationsRoute,
+  JobsRoute: JobsRouteWithChildren,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
+  DashboardAdminRoute: DashboardAdminRoute,
+  DashboardOfficerRoute: DashboardOfficerRoute,
+  DashboardStudentRoute: DashboardStudentRoute,
+  OfficerPostJobRoute: OfficerPostJobRoute,
+  OfficerStudentsRoute: OfficerStudentsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
